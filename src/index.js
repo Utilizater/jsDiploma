@@ -4,7 +4,6 @@ function slider(){
       slides = document.querySelectorAll(".main-slider-item");
   showSlides(slideIndex);
   document.getElementsByClassName("container")[1].style.overflow = "hidden";
-//  console.log(document.getElementsByClassName("container")[0].style.hight);
 
   function showSlides(n) {
     if (n > slides.length) {
@@ -18,10 +17,9 @@ function slider(){
     
     slides.forEach((item) => item.style.display = "none");
     slides[slideIndex - 1].style.display = "block";
-   // document.getElementsByClassName("main-slider")[0].style.overflow = "hidden";
  
     let hight = slides[slideIndex - 1].clientHeight;
-    console.log(hight);
+   // console.log(hight);
     slides[slideIndex - 1].style.marginTop = "-" + hight +  "px";
     let sliderAnimation = () => {
       let mt = +slides[slideIndex - 1].style.marginTop.replace('px', ""); 
@@ -38,9 +36,26 @@ function slider(){
     showSlides(slideIndex); 
   }, 3000);
 
-  
- 
-
 };
 
 slider();
+
+
+//first modal
+
+let reqPopupDesign = document.getElementsByClassName("reqPopupDesign"),
+    PopupDesign = document.getElementsByClassName("popup-design")[0];
+    popupClose = document.querySelector(".popup-design .popup-close");
+
+for (let i = 0; i < reqPopupDesign.length; i++) {
+  reqPopupDesign[i].addEventListener('click', () => {
+    PopupDesign.style.display = "block";
+  });
+}
+
+popupClose.addEventListener('click', () => {
+  PopupDesign.style.display = "none";
+});
+
+
+
