@@ -45,7 +45,7 @@ slider();
 
 let reqPopupDesign = document.getElementsByClassName("reqPopupDesign"),
     PopupDesign = document.getElementsByClassName("popup-design")[0];
-    popupClose = document.querySelector(".popup-design .popup-close");
+    firstPopupClose = document.querySelector(".popup-design .popup-close");
 
 for (let i = 0; i < reqPopupDesign.length; i++) {
   reqPopupDesign[i].addEventListener('click', () => {
@@ -53,9 +53,25 @@ for (let i = 0; i < reqPopupDesign.length; i++) {
   });
 }
 
-popupClose.addEventListener('click', () => {
+firstPopupClose.addEventListener('click', () => {
   PopupDesign.style.display = "none";
 });
 
+//second modal
+
+
+let reqPopupConsultation = document.getElementsByClassName("reqPopupConsultation"),
+    PopupConsultation = document.getElementsByClassName("popup-consultation")[0];
+    secondPopupClose = document.querySelector(".popup-consultation .popup-close");
+
+for (let i = 0; i < reqPopupConsultation.length; i++) {
+  reqPopupConsultation[i].addEventListener('click', () => {
+    PopupConsultation.style.display = "block";
+  });
+}
+
+secondPopupClose.addEventListener('click', () => {
+  PopupConsultation.style.display = "none";
+});
 
 
