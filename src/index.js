@@ -46,6 +46,7 @@ slider();
 let reqPopupDesign = document.getElementsByClassName("reqPopupDesign"),
     PopupDesign = document.getElementsByClassName("popup-design")[0];
     firstPopupClose = document.querySelector(".popup-design .popup-close");
+    allCloseButton = document.querySelectorAll(".popup-close");
 
 for (let i = 0; i < reqPopupDesign.length; i++) {
   reqPopupDesign[i].addEventListener('click', () => {
@@ -57,7 +58,14 @@ firstPopupClose.addEventListener('click', () => {
   PopupDesign.style.display = "none";
 });
 
+document.body.addEventListener('click', function(e) {
+  if (e.target != document.querySelector(".popup-design .popup-content") && e.target != reqPopupDesign[0] &&
+  e.target != reqPopupDesign[1] && e.target != reqPopupDesign[2])
+  PopupDesign.style.display = "none";
+});
+
 //second modal
+
 
 
 let reqPopupConsultation = document.getElementsByClassName("reqPopupConsultation"),
@@ -73,6 +81,14 @@ for (let i = 0; i < reqPopupConsultation.length; i++) {
 secondPopupClose.addEventListener('click', () => {
   PopupConsultation.style.display = "none";
 });
+
+
+document.body.addEventListener('click', function(e) {
+  if (e.target != document.querySelector(".popup-consultation .popup-content") && e.target != reqPopupConsultation[0] &&
+  e.target != reqPopupConsultation[1] && e.target != reqPopupConsultation[2])
+  PopupConsultation.style.display = "none";
+});
+
 
 
 //thirt modal
@@ -99,4 +115,8 @@ let reqPopupGift = document.getElementsByClassName("reqPopupGift")[0],
     });
 
 
-
+    document.body.addEventListener('click', function(e) {
+      if (e.target != document.querySelector(".popup-gift .popup-content") && e.target != reqPopupGift)
+      PopupGift.style.display = "none";
+    });
+    
