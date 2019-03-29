@@ -88,3 +88,15 @@ let reqPopupGift = document.getElementsByClassName("reqPopupGift")[0],
     thirdPopupClose.addEventListener('click', () => {
       PopupGift.style.display = "none";
     });
+
+    document.addEventListener("scroll", () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        if (PopupGift.style.display != "none") {
+          PopupGift.style.display = "block";
+          reqPopupGift.style.display = "none";
+        }
+      }
+    });
+
+
+
