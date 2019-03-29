@@ -59,7 +59,8 @@ firstPopupClose.addEventListener('click', () => {
 });
 
 document.body.addEventListener('click', function(e) {
-  if (e.target != document.querySelector(".popup-design .popup-content") && e.target != reqPopupDesign[0] &&
+//  console.log(e.target);
+  if (e.target.closest(".popup-content") == null  && e.target != reqPopupDesign[0] &&
   e.target != reqPopupDesign[1] && e.target != reqPopupDesign[2])
   PopupDesign.style.display = "none";
 });
@@ -84,11 +85,19 @@ secondPopupClose.addEventListener('click', () => {
 
 
 document.body.addEventListener('click', function(e) {
-  if (e.target != document.querySelector(".popup-consultation .popup-content") && e.target != reqPopupConsultation[0] &&
+  if (e.target.closest(".popup-content") == null && e.target != reqPopupConsultation[0] &&
   e.target != reqPopupConsultation[1] && e.target != reqPopupConsultation[2])
   PopupConsultation.style.display = "none";
 });
 
+function timerModal(){
+  if (document.getElementsByClassName("popup-design")[0].style.display != "block" &&
+  document.getElementsByClassName("popup-consultation")[0].style.display != "block" &&
+  document.getElementsByClassName("popup-gift")[0].style.display != "block" )
+  PopupConsultation.style.display = "block";
+}
+
+setTimeout(timerModal, 60000);
 
 
 //thirt modal
@@ -116,7 +125,18 @@ let reqPopupGift = document.getElementsByClassName("reqPopupGift")[0],
 
 
     document.body.addEventListener('click', function(e) {
-      if (e.target != document.querySelector(".popup-gift .popup-content") && e.target != reqPopupGift)
+      if (e.target.closest(".popup-content") == null && e.target != reqPopupGift)
       PopupGift.style.display = "none";
     });
     
+
+    /// Ajax
+    let form = document.getElementsByClassName("form"),
+        inputs = document.querySelectorAll("form input");
+    
+    for (let i = 0; i < form.length; i++) {
+      form[i].addEventListener('submit', function(e) {
+          event.preventDefault();
+          alert("Hi");
+      });
+    }
