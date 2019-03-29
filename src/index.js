@@ -75,3 +75,16 @@ secondPopupClose.addEventListener('click', () => {
 });
 
 
+//thirt modal
+let reqPopupGift = document.getElementsByClassName("reqPopupGift")[0],
+    PopupGift = document.getElementsByClassName("popup-gift")[0];
+    thirdPopupClose = document.querySelector(".popup-gift .popup-close");
+
+    reqPopupGift.addEventListener('click', () => {
+      PopupGift.style.display = "block";
+      reqPopupGift.style.display = "none";
+    });
+
+    thirdPopupClose.addEventListener('click', () => {
+      PopupGift.style.display = "none";
+    });
