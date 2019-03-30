@@ -135,7 +135,7 @@ let reqPopupGift = document.getElementsByClassName("reqPopupGift")[0],
         inputs = document.querySelectorAll("form input");
     
     for (let i = 0; i < form.length; i++) {
-      console.log(form[i]);
+      //console.log(form[i]);
       form[i].addEventListener('submit', function(e) {
           event.preventDefault();
           alert("Hi");
@@ -217,6 +217,31 @@ let reqPopupGift = document.getElementsByClassName("reqPopupGift")[0],
       } else  calcPrice.textContent = "Для расчета нужно выбрать размер картины и материал картины";
     });
 
-    /* setInterval(function() {
-      console.log(toCount(false));
-    }, 1000);*/
+    //Filtr
+    let portfolioMenu = document.querySelectorAll(".portfolio-menu li"),
+        portfolioBlock = document.querySelectorAll(".portfolio-block");
+    
+    for (let i = 0; i < portfolioMenu.length; i++) {
+      portfolioMenu[i].addEventListener('click', function(e) {
+    //  console.log(this.classList.value);
+
+      for (let j = 0; j < portfolioMenu.length; j++) {
+ //       console.log(portfolioMenu[i].classList);
+        if(portfolioMenu[j].classList.contains("active")) {
+   //       console.log(portfolioMenu[i].classList);
+          portfolioMenu[j].classList.remove("active");
+        }
+        
+      }
+      this.classList.add("active");
+
+      for (let j = 0; j < portfolioBlock.length; j++) {
+        if(portfolioBlock[j].classList.contains(this.classList.value.split(" ")[0])) {
+          portfolioBlock[j].style.display = "block";
+        } else portfolioBlock[j].style.display = "none";
+      }
+    });
+  }
+
+
+   // console.log(portfolioBlock.length);
