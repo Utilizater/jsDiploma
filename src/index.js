@@ -403,7 +403,7 @@ secondSlider();
 //accordion
 function accordion() {
   let accordionHeading = document.getElementsByClassName("accordion-heading"),
-      accordionBlock = document.getElementsByClassName("accordion-block");
+    accordionBlock = document.getElementsByClassName("accordion-block");
 
   function hideAll() {
     for (let i = 0; i < accordionBlock.length; i++) {
@@ -413,21 +413,21 @@ function accordion() {
   }
   hideAll();
 
-//accHeadline
+  //accHeadline
 
-  for (let i = 0;  i < accordionHeading.length; i++) {
-    accordionHeading[i].addEventListener('click', function() {
-    //  hideAll();
-      if(accordionHeading[i].id == "accHead-1") {
+  for (let i = 0; i < accordionHeading.length; i++) {
+    accordionHeading[i].addEventListener('click', function () {
+      //  hideAll();
+      if (accordionHeading[i].id == "accHead-1") {
         if (document.getElementById("accBody-1").style.display == "none") {
           hideAll();
           accAnimate(document.getElementById("accBody-1"));
-//          document.getElementById("accBody-1").style.display = "block";
+          //          document.getElementById("accBody-1").style.display = "block";
           document.getElementById("accHead-1").classList.add("accHeadline");
         } else hideAll();
-      } 
+      }
 
-      if(accordionHeading[i].id == "accHead-2") {
+      if (accordionHeading[i].id == "accHead-2") {
         if (document.getElementById("accBody-2").style.display == "none") {
           hideAll();
           accAnimate(document.getElementById("accBody-2"));;
@@ -436,7 +436,7 @@ function accordion() {
       }
 
 
-      if(accordionHeading[i].id == "accHead-3") {
+      if (accordionHeading[i].id == "accHead-3") {
         if (document.getElementById("accBody-3").style.display == "none") {
           hideAll();
           accAnimate(document.getElementById("accBody-3"));
@@ -445,7 +445,7 @@ function accordion() {
       }
 
 
-      if(accordionHeading[i].id == "accHead-4") {
+      if (accordionHeading[i].id == "accHead-4") {
         if (document.getElementById("accBody-4").style.display == "none") {
           hideAll();
           accAnimate(document.getElementById("accBody-4"));
@@ -454,17 +454,43 @@ function accordion() {
       }
     });
   }
+
   function accAnimate(element) {
     element.style.opacity = "0.1";
     element.style.display = 'block';
 
-       let Anim = () => {
-         if (+element.style.opacity != 1)
-         element.style.opacity = +element.style.opacity + 0.1 + "";
-         else clearInterval(z);
-       };
-       let z = setInterval(Anim, 50);
+    let Anim = () => {
+      if (+element.style.opacity != 1)
+        element.style.opacity = +element.style.opacity + 0.1 + "";
+      else clearInterval(z);
+    };
+    let z = setInterval(Anim, 50);
   }
 };
 
 accordion();
+
+//hamburger
+
+function hamburger() {
+  let burger = document.querySelector(".burger")
+  bm = document.getElementsByClassName("burger-menu")[0];
+  if (window.innerWidth < 768) {
+    console.log(bm.style.display);
+    burger.addEventListener('click', () => {
+      if (bm.style.display != "block")
+        bm.style.display = "block";
+      else bm.style.display = "none";
+    });
+  }
+
+window.addEventListener('resize', () => {
+  console.log(window.innerWidth > 768);
+  console.log(window.innerWidth);
+  if (bm.style.display == "block" && window.innerWidth > 768)
+  bm.style.display = "none";
+});
+
+}
+
+hamburger();
