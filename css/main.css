@@ -1724,3 +1724,11 @@ h4 {
     width: 25rem;
   }
 }
+
+.accHeadline {
+  color: #a12ab1;
+}
+
+.accHeadline > span {
+  border-bottom: none !important;
+}
