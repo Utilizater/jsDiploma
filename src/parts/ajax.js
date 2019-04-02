@@ -88,6 +88,53 @@ function ajax() {
         })
     });
   }
+  //валидация телефона
+  let phone = document.querySelectorAll(".input-phone");
+
+
+  for (let i = 0; i < phone.length; i++) {
+    phone[i].addEventListener('click', function(){
+      phone[i].value = "+";
+    });
+    
+    let old = 0;
+    
+    phone[i].addEventListener('input', function() {
+      let st = this.value;
+      if (!Number.isInteger(+st[st.length - 1])) {
+        this.value = st.substring(0, st.length - 1);
+        return null;
+      }
+    });
+    
+    phone[i].addEventListener('keydown', function(){
+      var curLen = phone[i].value.length;
+        
+      if (curLen < old){
+        old--;
+        return;
+        }
+      if (curLen == 2) 
+      phone[i].value = phone[i].value + "(";
+        
+      if (curLen == 6)
+      phone[i].value = phone[i].value + ")-";
+        
+       if (curLen == 11)
+       phone[i].value = phone[i].value + "-"; 
+        
+       if (curLen == 14)
+       phone[i].value = phone[i].value + "-";  
+        
+       if (curLen > 16)
+       phone[i].value = phone[i].value.substring(0, phone[i].value.length - 1);
+        
+       old++;
+    });
+    
+  }
+
+
 };
 
 module.exports = ajax;

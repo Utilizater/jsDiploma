@@ -14039,6 +14039,43 @@ function ajax() {
 
   for (var i = 0; i < form.length; i++) {
     _loop(i);
+  } //валидация телефона
+
+
+  var phone = document.querySelectorAll(".input-phone");
+
+  var _loop2 = function _loop2(i) {
+    phone[i].addEventListener('click', function () {
+      phone[i].value = "+";
+    });
+    var old = 0;
+    phone[i].addEventListener('input', function () {
+      var st = this.value;
+
+      if (!Number.isInteger(+st[st.length - 1])) {
+        this.value = st.substring(0, st.length - 1);
+        return null;
+      }
+    });
+    phone[i].addEventListener('keydown', function () {
+      var curLen = phone[i].value.length;
+
+      if (curLen < old) {
+        old--;
+        return;
+      }
+
+      if (curLen == 2) phone[i].value = phone[i].value + "(";
+      if (curLen == 6) phone[i].value = phone[i].value + ")-";
+      if (curLen == 11) phone[i].value = phone[i].value + "-";
+      if (curLen == 14) phone[i].value = phone[i].value + "-";
+      if (curLen > 16) phone[i].value = phone[i].value.substring(0, phone[i].value.length - 1);
+      old++;
+    });
+  };
+
+  for (var i = 0; i < phone.length; i++) {
+    _loop2(i);
   }
 }
 
