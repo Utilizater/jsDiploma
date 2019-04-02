@@ -133,6 +133,27 @@ function ajax() {
     });
     
   }
+////имя и комент на русском языке
+let isValid = function(s) {
+  const cyrillicPattern = /[\u0400-\u04FF]/;
+//  const cyrillicPattern = /^\s*(\w+)\s*$/;
+  return cyrillicPattern.test(s);
+};
+
+
+
+
+let ruInput = document.querySelectorAll(".ru");
+
+for(let i = 0; i < ruInput.length; i++) {
+  ruInput[i].addEventListener('input', function() {
+    let st = this.value;
+    if (!isValid(st[st.length - 1])) {
+      this.value = st.substring(0, st.length - 1);
+      return null;
+    }
+  });
+}
 
 
 };
