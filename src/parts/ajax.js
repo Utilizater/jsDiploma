@@ -8,7 +8,7 @@ function ajax() {
       failure: '...что-то погло не так :-('
     };
     form[i].addEventListener("submit", (event) => {
-      statusMesaage = form[i].getElementsByClassName("statusMesaage")[0];
+      statusMesaage = form[i].getElementsByClassName("status")[0];
       if (statusMesaage == undefined) {
         statusMesaage = document.createElement("div");
         statusMesaage.classList.add("status");

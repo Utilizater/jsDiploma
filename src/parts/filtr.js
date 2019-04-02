@@ -18,7 +18,8 @@ function filtr() {
 
       for (let j = 0; j < portfolioBlock.length; j++) {
         let bol = false;
-        if (portfolioBlock[j].classList.contains(this.classList.value.split(" ")[0])) {
+        if (portfolioBlock[j].classList.contains(this.classList[0])) {
+     //   if (portfolioBlock[j].classList.contains(this.classList.value.split(" ")[0])) {
           portfolioBlock[j].style.display = "block";
           bol = true;
         } else portfolioBlock[j].style.display = "none";

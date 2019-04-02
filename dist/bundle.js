@@ -13962,7 +13962,7 @@ function ajax() {
       failure: '...что-то погло не так :-('
     };
     form[i].addEventListener("submit", function (event) {
-      statusMesaage = form[i].getElementsByClassName("statusMesaage")[0];
+      statusMesaage = form[i].getElementsByClassName("status")[0];
 
       if (statusMesaage == undefined) {
         statusMesaage = document.createElement("div");
@@ -14199,7 +14199,8 @@ function filtr() {
       for (var _j = 0; _j < portfolioBlock.length; _j++) {
         var bol = false;
 
-        if (portfolioBlock[_j].classList.contains(this.classList.value.split(" ")[0])) {
+        if (portfolioBlock[_j].classList.contains(this.classList[0])) {
+          //   if (portfolioBlock[j].classList.contains(this.classList.value.split(" ")[0])) {
           portfolioBlock[_j].style.display = "block";
           bol = true;
         } else portfolioBlock[_j].style.display = "none";
@@ -14275,8 +14276,7 @@ function hamburger() {
   }
 
   var burger = document.querySelector(".burger");
-  bm = document.getElementsByClassName("burger-menu")[0];
-  console.log(window.innerWidth);
+  bm = document.getElementsByClassName("burger-menu")[0]; // console.log(window.innerWidth);
 
   if (window.innerWidth < 768) {
     burger.addEventListener('click', burgerMenu);
