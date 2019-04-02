@@ -1,4 +1,4 @@
-function slider() {
+function mainSlider() {
   let slideIndex = 1,
     slides = document.querySelectorAll(".main-slider-item");
   showSlides(slideIndex);
