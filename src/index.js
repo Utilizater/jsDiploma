@@ -42,104 +42,119 @@ slider();
 
 //first modal
 
-let reqPopupDesign = document.getElementsByClassName("reqPopupDesign"),
-  PopupDesign = document.getElementsByClassName("popup-design")[0];
-firstPopupClose = document.querySelector(".popup-design .popup-close");
-allCloseButton = document.querySelectorAll(".popup-close");
+function firstModal() {
+  let reqPopupDesign = document.getElementsByClassName("reqPopupDesign"),
+    PopupDesign = document.getElementsByClassName("popup-design")[0],
+    firstPopupClose = document.querySelector(".popup-design .popup-close"),
+    allCloseButton = document.querySelectorAll(".popup-close");
 
-for (let i = 0; i < reqPopupDesign.length; i++) {
-  reqPopupDesign[i].addEventListener('click', () => {
-    PopupDesign.style.display = "block";
-  });
-}
 
-firstPopupClose.addEventListener('click', () => {
-  PopupDesign.style.display = "none";
-});
+    
+  function unClean(element) {
+   // console.log("Hi");
+    element = element.querySelectorAll("*");
+    for(let j = 0; j < element.length; j++) {
+     // console.log(element[j]);
+      if (element[j].classList.value != "status")
+      element[j].style.display = "block";
+    }
+  }
 
-document.body.addEventListener('click', function (e) {
-  //  console.log(e.target);
-  if (e.target.closest(".popup-content") == null && e.target != reqPopupDesign[0] &&
-    e.target != reqPopupDesign[1] && e.target != reqPopupDesign[2])
+  for (let i = 0; i < reqPopupDesign.length; i++) {
+   // console.log(reqPopupDesign[i]);
+    reqPopupDesign[i].addEventListener('click', () => {
+      
+      PopupDesign.style.display = "block";  
+      unClean(PopupDesign);
+    });
+  }
+
+  firstPopupClose.addEventListener('click', () => {
     PopupDesign.style.display = "none";
-});
+  });
+
+  document.body.addEventListener('click', function (e) {
+    //  console.log(e.target);
+    if (e.target.closest(".popup-content") == null && e.target != reqPopupDesign[0] &&
+      e.target != reqPopupDesign[1] && e.target != reqPopupDesign[2] && e.target != reqPopupDesign[3] && 
+      e.target != reqPopupDesign[4] && e.target != reqPopupDesign[5] && e.target != reqPopupDesign[6] )
+      PopupDesign.style.display = "none";
+  });
+};
+firstModal();
+
 
 //second modal
+function secondModal() {
+  let reqPopupConsultation = document.getElementsByClassName("reqPopupConsultation"),
+    PopupConsultation = document.getElementsByClassName("popup-consultation")[0];
+  secondPopupClose = document.querySelector(".popup-consultation .popup-close");
 
+  for (let i = 0; i < reqPopupConsultation.length; i++) {
+    reqPopupConsultation[i].addEventListener('click', () => {
+      PopupConsultation.style.display = "block";
+    });
+  }
 
-
-let reqPopupConsultation = document.getElementsByClassName("reqPopupConsultation"),
-  PopupConsultation = document.getElementsByClassName("popup-consultation")[0];
-secondPopupClose = document.querySelector(".popup-consultation .popup-close");
-
-for (let i = 0; i < reqPopupConsultation.length; i++) {
-  reqPopupConsultation[i].addEventListener('click', () => {
-    PopupConsultation.style.display = "block";
-  });
-}
-
-secondPopupClose.addEventListener('click', () => {
-  PopupConsultation.style.display = "none";
-});
-
-
-document.body.addEventListener('click', function (e) {
-  if (e.target.closest(".popup-content") == null && e.target != reqPopupConsultation[0] &&
-    e.target != reqPopupConsultation[1] && e.target != reqPopupConsultation[2])
+  secondPopupClose.addEventListener('click', () => {
     PopupConsultation.style.display = "none";
-});
+  });
 
-function timerModal() {
-  if (document.getElementsByClassName("popup-design")[0].style.display != "block" &&
-    document.getElementsByClassName("popup-consultation")[0].style.display != "block" &&
-    document.getElementsByClassName("popup-gift")[0].style.display != "block")
-    PopupConsultation.style.display = "block";
+
+  document.body.addEventListener('click', function (e) {
+    if (e.target.closest(".popup-content") == null && e.target != reqPopupConsultation[0] &&
+      e.target != reqPopupConsultation[1] && e.target != reqPopupConsultation[2])
+      PopupConsultation.style.display = "none";
+  });
+
+  function timerModal() {
+    if (document.getElementsByClassName("popup-design")[0].style.display != "block" &&
+      document.getElementsByClassName("popup-consultation")[0].style.display != "block" &&
+      document.getElementsByClassName("popup-gift")[0].style.display != "block")
+      PopupConsultation.style.display = "block";
+  }
+
+  setTimeout(timerModal, 60000);
+
 }
 
-setTimeout(timerModal, 60000);
+secondModal();
 
 
 //thirt modal
-let reqPopupGift = document.getElementsByClassName("reqPopupGift")[0],
-  PopupGift = document.getElementsByClassName("popup-gift")[0];
-thirdPopupClose = document.querySelector(".popup-gift .popup-close");
+function thirtModal() {
+  let reqPopupGift = document.getElementsByClassName("reqPopupGift")[0],
+    PopupGift = document.getElementsByClassName("popup-gift")[0];
+  thirdPopupClose = document.querySelector(".popup-gift .popup-close");
 
-reqPopupGift.addEventListener('click', () => {
-  PopupGift.style.display = "block";
-  reqPopupGift.style.display = "none";
-});
-
-thirdPopupClose.addEventListener('click', () => {
-  PopupGift.style.display = "none";
-});
-
-document.addEventListener("scroll", () => {
-  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    if (PopupGift.style.display != "none") {
-      PopupGift.style.display = "block";
-      reqPopupGift.style.display = "none";
-    }
-  }
-});
-
-
-document.body.addEventListener('click', function (e) {
-  if (e.target.closest(".popup-content") == null && e.target != reqPopupGift)
-    PopupGift.style.display = "none";
-});
-
-
-/// Ajax
-let form = document.getElementsByClassName("form"),
-  inputs = document.querySelectorAll("form input");
-
-for (let i = 0; i < form.length; i++) {
-  //console.log(form[i]);
-  form[i].addEventListener('submit', function (e) {
-    event.preventDefault();
-    alert("Hi");
+  reqPopupGift.addEventListener('click', () => {
+    PopupGift.style.display = "block";
+    reqPopupGift.style.display = "none";
   });
+
+  thirdPopupClose.addEventListener('click', () => {
+    PopupGift.style.display = "none";
+  });
+
+  document.addEventListener("scroll", () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      if (PopupGift.style.display != "none") {
+        PopupGift.style.display = "block";
+        reqPopupGift.style.display = "none";
+      }
+    }
+  });
+
+
+  document.body.addEventListener('click', function (e) {
+    if (e.target.closest(".popup-content") == null && e.target != reqPopupGift)
+      PopupGift.style.display = "none";
+  });
+
 }
+
+thirtModal();
+
 
 ///add styles 
 let addStyles = document.getElementsByClassName("button-styles")[0],
@@ -235,111 +250,121 @@ for (let i = 0; i < portfolioMenu.length; i++) {
     this.classList.add("active");
 
     for (let j = 0; j < portfolioBlock.length; j++) {
+      let bol = false;
       if (portfolioBlock[j].classList.contains(this.classList.value.split(" ")[0])) {
         portfolioBlock[j].style.display = "block";
+        bol = true;
       } else portfolioBlock[j].style.display = "none";
+
+      if(!bol) {
+        document.getElementsByClassName("portfolio-no")[0].style.display = "block";
+      } else document.getElementsByClassName("portfolio-no")[0].style.display = "none";
     }
   });
 }
 
 // Hover effect
-let sizesBlock = document.querySelectorAll(".sizes-block");
-if (window.innerWidth > 900) {
-  for (let i = 0; i < sizesBlock.length; i++) {
-    sizesBlock[i].addEventListener("mouseover", function () {
-      let picture = this.querySelector("img");
-      if (picture.classList.contains("size-1"))
-        picture.src = "./img/sizes-1-1.png";
-
-      if (picture.classList.contains("size-2"))
-        picture.src = "./img/sizes-2-1.png";
-
-      if (picture.classList.contains("size-3"))
-        picture.src = "./img/sizes-3-1.png";
-
-      if (picture.classList.contains("size-4"))
-        picture.src = "./img/sizes-4-1.png";
-
-
-      this.querySelector(".size").style.display = "none";
-      this.querySelector(".starting-price").style.display = "none";
-      this.querySelector(".final-price").style.display = "none";
-    });
-
-    sizesBlock[i].addEventListener("mouseout", function () {
-      let picture = this.querySelector("img");
-      if (picture.classList.contains("size-1"))
-        picture.src = "./img/sizes-1.png";
-
-      if (picture.classList.contains("size-2"))
-        picture.src = "./img/sizes-2.png";
-
-      if (picture.classList.contains("size-3"))
-        picture.src = "./img/sizes-3.png";
-
-      if (picture.classList.contains("size-4"))
-        picture.src = "./img/sizes-4.png";
-
-
-      this.querySelector(".size").style.display = "block";
-      this.querySelector(".starting-price").style.display = "block";
-      this.querySelector(".final-price").style.display = "block";
-    });
-  }
-} else { ///для мобилы
-  for (let i = 0; i < sizesBlock.length; i++) {
-    sizesBlock[i].addEventListener("click", function () {
-      let picture = this.querySelector("img");
-      if (picture.classList.contains("size-1"))
-        picture.src = "./img/sizes-1-1.png";
-
-      if (picture.classList.contains("size-2"))
-        picture.src = "./img/sizes-2-1.png";
-
-      if (picture.classList.contains("size-3"))
-        picture.src = "./img/sizes-3-1.png";
-
-      if (picture.classList.contains("size-4"))
-        picture.src = "./img/sizes-4-1.png";
-
-
-      this.querySelector(".size").style.display = "none";
-      this.querySelector(".starting-price").style.display = "none";
-      this.querySelector(".final-price").style.display = "none";
-    });
-  }
-
-  document.body.addEventListener("click", function (e) {
+function HoverEffect() {
+  let sizesBlock = document.querySelectorAll(".sizes-block");
+  if (window.innerWidth > 900) {
     for (let i = 0; i < sizesBlock.length; i++) {
-      if (e.target.closest("." + sizesBlock[i].classList) != null) {
-        // console.log(e.target.parentNode.querySelector("img").classList.value);
-        if (e.target.parentNode != sizesBlock[i]) {
-          // console.log(sizesBlock[i].querySelector("img").classList.value);
-          setPicture(sizesBlock[i]);
-        }
-      } else setPicture(sizesBlock[i]);
+      sizesBlock[i].addEventListener("mouseover", function () {
+        let picture = this.querySelector("img");
+        if (picture.classList.contains("size-1"))
+          picture.src = "./img/sizes-1-1.png";
+
+        if (picture.classList.contains("size-2"))
+          picture.src = "./img/sizes-2-1.png";
+
+        if (picture.classList.contains("size-3"))
+          picture.src = "./img/sizes-3-1.png";
+
+        if (picture.classList.contains("size-4"))
+          picture.src = "./img/sizes-4-1.png";
+
+
+        this.querySelector(".size").style.display = "none";
+        this.querySelector(".starting-price").style.display = "none";
+        this.querySelector(".final-price").style.display = "none";
+      });
+
+      sizesBlock[i].addEventListener("mouseout", function () {
+        let picture = this.querySelector("img");
+        if (picture.classList.contains("size-1"))
+          picture.src = "./img/sizes-1.png";
+
+        if (picture.classList.contains("size-2"))
+          picture.src = "./img/sizes-2.png";
+
+        if (picture.classList.contains("size-3"))
+          picture.src = "./img/sizes-3.png";
+
+        if (picture.classList.contains("size-4"))
+          picture.src = "./img/sizes-4.png";
+
+
+        this.querySelector(".size").style.display = "block";
+        this.querySelector(".starting-price").style.display = "block";
+        this.querySelector(".final-price").style.display = "block";
+      });
+    }
+  } else { ///для мобилы
+    for (let i = 0; i < sizesBlock.length; i++) {
+      sizesBlock[i].addEventListener("click", function () {
+        let picture = this.querySelector("img");
+        if (picture.classList.contains("size-1"))
+          picture.src = "./img/sizes-1-1.png";
+
+        if (picture.classList.contains("size-2"))
+          picture.src = "./img/sizes-2-1.png";
+
+        if (picture.classList.contains("size-3"))
+          picture.src = "./img/sizes-3-1.png";
+
+        if (picture.classList.contains("size-4"))
+          picture.src = "./img/sizes-4-1.png";
+
+
+        this.querySelector(".size").style.display = "none";
+        this.querySelector(".starting-price").style.display = "none";
+        this.querySelector(".final-price").style.display = "none";
+      });
     }
 
-    function setPicture(item) {
-      if (item.querySelector("img").classList.value == "size-1")
-        item.querySelector("img").src = "./img/sizes-1.png";
+    document.body.addEventListener("click", function (e) {
+      for (let i = 0; i < sizesBlock.length; i++) {
+        if (e.target.closest("." + sizesBlock[i].classList) != null) {
+          // console.log(e.target.parentNode.querySelector("img").classList.value);
+          if (e.target.parentNode != sizesBlock[i]) {
+            // console.log(sizesBlock[i].querySelector("img").classList.value);
+            setPicture(sizesBlock[i]);
+          }
+        } else setPicture(sizesBlock[i]);
+      }
 
-      if (item.querySelector("img").classList.value == "size-2")
-        item.querySelector("img").src = "./img/sizes-2.png";
+      function setPicture(item) {
+        if (item.querySelector("img").classList.value == "size-1")
+          item.querySelector("img").src = "./img/sizes-1.png";
 
-      if (item.querySelector("img").classList.value == "size-3")
-        item.querySelector("img").src = "./img/sizes-3.png";
+        if (item.querySelector("img").classList.value == "size-2")
+          item.querySelector("img").src = "./img/sizes-2.png";
 
-      if (item.querySelector("img").classList.value == "size-4")
-        item.querySelector("img").src = "./img/sizes-4.png";
+        if (item.querySelector("img").classList.value == "size-3")
+          item.querySelector("img").src = "./img/sizes-3.png";
+
+        if (item.querySelector("img").classList.value == "size-4")
+          item.querySelector("img").src = "./img/sizes-4.png";
 
 
-      item.querySelector(".size").style.display = "block";
-      item.querySelector(".starting-price").style.display = "block";
-      item.querySelector(".final-price").style.display = "block";
-    }
-  });
+        item.querySelector(".size").style.display = "block";
+        item.querySelector(".starting-price").style.display = "block";
+        item.querySelector(".final-price").style.display = "block";
+      }
+    });
+  }
 }
+
+HoverEffect();
 
 
 //second slider
@@ -413,8 +438,6 @@ function accordion() {
   }
   hideAll();
 
-  //accHeadline
-
   for (let i = 0; i < accordionHeading.length; i++) {
     accordionHeading[i].addEventListener('click', function () {
       //  hideAll();
@@ -473,24 +496,140 @@ accordion();
 //hamburger
 
 function hamburger() {
-  let burger = document.querySelector(".burger")
-  bm = document.getElementsByClassName("burger-menu")[0];
-  if (window.innerWidth < 768) {
-    console.log(bm.style.display);
-    burger.addEventListener('click', () => {
-      if (bm.style.display != "block")
-        bm.style.display = "block";
-      else bm.style.display = "none";
-    });
+  function burgerMenu(){
+    if (bm.style.display != "block")
+    bm.style.display = "block";
+  else bm.style.display = "none";
   }
 
-window.addEventListener('resize', () => {
-  console.log(window.innerWidth > 768);
+  let burger = document.querySelector(".burger")
+  bm = document.getElementsByClassName("burger-menu")[0];
   console.log(window.innerWidth);
-  if (bm.style.display == "block" && window.innerWidth > 768)
-  bm.style.display = "none";
-});
+
+   if (window.innerWidth < 768) {
+        burger.addEventListener('click', burgerMenu);
+      }
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 768) {
+        burger.addEventListener('click', burgerMenu);
+    } else burger.removeEventListener('click', burgerMenu);
+  });
+
+
+  
+
+  window.addEventListener('resize', () => {
+       if (bm.style.display == "block" && window.innerWidth > 768)
+      bm.style.display = "none";
+  });
 
 }
 
 hamburger();
+
+/// Ajax
+let form = document.querySelectorAll("form");
+
+//console.log(form);
+for(let i = 0; i < form.length; i++) {
+  let message = {
+    loading: 'Загрузка',
+    success: 'Отправлено',
+    failure: '...что-то погло не так :-('
+  };
+  form[i].addEventListener("submit", (event) => {
+    statusMesaage = form[i].getElementsByClassName("statusMesaage")[0];
+    if (statusMesaage == undefined){
+      statusMesaage = document.createElement("div");    
+      statusMesaage.classList.add("status");
+      form[i].appendChild(statusMesaage);
+    }
+
+    
+    
+    //console.log(form[i].length);
+
+    function clean(element) {
+      element = element.querySelectorAll("*");
+      for(let j = 0; j < element.length; j++) {
+        console.log(element[j]);
+        if (element[j].classList.value != "status")
+        element[j].style.display = "none";
+      }
+    }
+
+    
+
+    event.preventDefault(); 
+
+    let formData = new FormData(form[i]);
+
+    function postData(data) {
+      return new Promise(function (resolve, reject) {
+        let requesst = new XMLHttpRequest();
+        requesst.open('POST', 'smart.php');
+        requesst.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+
+        requesst.addEventListener('readystatechange', () => {
+          if (requesst.readyState < 4) {
+            statusMesaage.innerHTML = message.loading;
+          } else if (requesst.readyState == 4 && requesst.status == 200) {
+            statusMesaage.innerHTML = message.success;
+            statusMesaage.style.height = "80px";
+        //    statusMesaage.style.background = `url(${message.success}) no-repeat center`;
+            statusMesaage.style.marginTop = "10px";
+          //  document.getElementById("modalPhone").value = "";
+          clean(form[i]);
+
+          } else {
+            statusMesaage.innerHTML = message.failure;
+            statusMesaage.style.height = "80px";
+          //  statusMesaage.style.background = `url(${message.failure}) no-repeat center`;
+            statusMesaage.style.marginTop = "10px";
+           // document.getElementById("modalPhone").value = "";
+          clean(form[i]);
+          }
+        });
+     //    console.log(data);
+        requesst.send(data);
+      });
+    }
+
+
+    
+    postData(formData)
+      .then(() => {
+        statusMesaage.innerHTML = message.loading;
+      })
+      .then(() => {
+        statusMesaage.innerHTML = message.success;
+        statusMesaage.style.height = "80px";
+       // statusMesaage.style.background = `url(${message.success}) no-repeat center`;
+        statusMesaage.style.marginTop = "10px";
+      //  document.getElementById("modalPhone").value = "";
+      clean(form[i]);
+      })
+      .catch(() => {
+        statusMesaage.innerHTML = message.failure;
+        statusMesaage.style.height = "80px";
+      //  statusMesaage.style.background = `url(${message.failure}) no-repeat center`;
+        statusMesaage.style.marginTop = "10px";
+        clean(form[i]);
+      })
+      .then(() => {
+    //   console.log("Hi");
+        for (let i = 0; i < input.length; i++) {
+          input[i].value = "";
+        }
+        clean(form[i]);
+      })
+
+
+    ///////////////
+    
+  });
+}
+
+

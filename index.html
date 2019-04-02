@@ -229,7 +229,7 @@
 			<h2>Рассчитайте стоимость и получите скидку 30%</h2>
 			<div class=row>
 				<div class="col-md-4 col-offset-1">
-					<form class=form action=# method=POST enctype=multipart/form-data>
+					<form class=form action=# method=POST enctype=multipart/form-data id = "bla">
 						<h4>Загрузите свое фото</h4>
 						<div class=file_upload>
 							<button type=button>Загрузить фотографию</button>
@@ -257,7 +257,7 @@
 						</select>
 						<input type="text" class="promocode" placeholder="Введите ваш промокод">
 						<div class=calc-price>Для расчета нужно выбрать размер картины и материал картины</div>
-						<button class="button button-order">Быстрый заказ</button>
+						<button class="button button-order" type="submit">Быстрый заказ</button>
 					</form>
 				</div>
 				<div class="col-md-4 col-md-offset-2 hidden-sm hidden-xs">
@@ -503,7 +503,7 @@
 					<div class=col-sm-5>
 						<div class=feedback-block>
 							<img src=img/feedback-1.png alt>
-							<button class="button button-order button-design">Хочу так же</button>
+							<button class="button button-order button-design reqPopupDesign">Хочу так же</button>
 						</div>
 					</div>
 					<div class="col-sm-5 col-sm-offset-1">
@@ -516,7 +516,7 @@
 					<div class=col-sm-5>
 						<div class=feedback-block>
 							<img src=img/feedback-2.jpg alt>
-							<button class="button button-order button-design">Хочу так же</button>
+							<button class="button button-order button-design reqPopupDesign">Хочу так же</button>
 						</div>
 					</div>
 					<div class="col-sm-5 col-sm-offset-1">
@@ -529,7 +529,7 @@
 					<div class=col-sm-5>
 						<div class=feedback-block>
 							<img src=img/feedback-3.jpg alt>
-							<button class="button button-order button-design">Хочу так же</button>
+							<button class="button button-order button-design reqPopupDesign">Хочу так же</button>
 						</div>
 					</div>
 					<div class="col-sm-5 col-sm-offset-1">
@@ -686,7 +686,7 @@
 		<div class=popup-dialog>
 			<div class=popup-content>
 				<button class=popup-close>&times;</button>
-				<form action= method=POST enctype=multipart/form-data>
+				<form action= method=POST enctype=multipart/form-data id="qwerty">
 					<h4>Заказать дизайн портрета</h4>
 					<div class=file_uploa>
 						<button type=button>Загрузить фотографию</button>
@@ -699,7 +699,7 @@
 							<input type=text name=phone placeholder="Ваш телефон" required>
 							<input type=text name=email placeholder="Ваш e-mail">
 							<textarea name=message placeholder=Комментарий rows=2></textarea>
-							<button class="button button-order" type="submit">Отправить дизайнеру asdasd</button>
+							<button class="button button-order" type="submit">Отправить дизайнеру</button>
 						</div>
 					</div>
 				</form>
