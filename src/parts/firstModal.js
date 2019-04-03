@@ -14,12 +14,18 @@ function firstModal() {
       if (element[j].classList.value != "status")
       element[j].style.display = "block";
     }
+
+    statusMesaage = document.getElementsByClassName("status")[0];
+    console.log(statusMesaage);
+    if (statusMesaage != undefined)
+     statusMesaage.parentElement.removeChild(statusMesaage);
   }
 
   for (let i = 0; i < reqPopupDesign.length; i++) {
    // console.log(reqPopupDesign[i]);
     reqPopupDesign[i].addEventListener('click', () => {
-      
+
+
       PopupDesign.style.display = "block";  
       unClean(PopupDesign);
     });

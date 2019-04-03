@@ -9,19 +9,27 @@ function ajax() {
     };
     form[i].addEventListener("submit", (event) => {
       statusMesaage = form[i].getElementsByClassName("status")[0];
+    //  console.log(statusMesaage);
       if (statusMesaage == undefined) {
         statusMesaage = document.createElement("div");
         statusMesaage.classList.add("status");
         form[i].appendChild(statusMesaage);
-      }
+      } 
 
       function clean(element) {
         element = element.querySelectorAll("*");
         for (let j = 0; j < element.length; j++) {
-          console.log(element[j]);
+      //    console.log(element[j]);
           if (element[j].classList.value != "status")
             element[j].style.display = "none";
+            element[j].value = "";
         }
+        setTimeout(function(){
+         let PopupDesign = document.getElementsByClassName("popup-design")[0],
+             PopupConsultation = document.getElementsByClassName("popup-consultation")[0];
+             PopupDesign.style.display = "none";
+             PopupConsultation.style.display = "none";
+        }, 3000); 
       }
 
       event.preventDefault();
@@ -139,9 +147,6 @@ let isValid = function(s) {
 //  const cyrillicPattern = /^\s*(\w+)\s*$/;
   return cyrillicPattern.test(s);
 };
-
-
-
 
 let ruInput = document.querySelectorAll(".ru");
 
