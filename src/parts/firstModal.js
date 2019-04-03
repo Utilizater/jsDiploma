@@ -16,7 +16,6 @@ function firstModal() {
     }
 
     statusMesaage = document.getElementsByClassName("status")[0];
-    console.log(statusMesaage);
     if (statusMesaage != undefined)
      statusMesaage.parentElement.removeChild(statusMesaage);
   }

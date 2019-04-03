@@ -14249,7 +14249,6 @@ function firstModal() {
     }
 
     statusMesaage = document.getElementsByClassName("status")[0];
-    console.log(statusMesaage);
     if (statusMesaage != undefined) statusMesaage.parentElement.removeChild(statusMesaage);
   }
 
@@ -14372,9 +14371,23 @@ function secondModal() {
       PopupConsultation = document.getElementsByClassName("popup-consultation")[0];
   secondPopupClose = document.querySelector(".popup-consultation .popup-close");
 
+  function unClean(element) {
+    // console.log("Hi");
+    element = element.querySelectorAll("*");
+
+    for (var j = 0; j < element.length; j++) {
+      // console.log(element[j]);
+      if (element[j].classList.value != "status") element[j].style.display = "block";
+    }
+
+    statusMesaage = document.getElementsByClassName("status")[0];
+    if (statusMesaage != undefined) statusMesaage.parentElement.removeChild(statusMesaage);
+  }
+
   for (var i = 0; i < reqPopupConsultation.length; i++) {
     reqPopupConsultation[i].addEventListener('click', function () {
       PopupConsultation.style.display = "block";
+      unClean(PopupConsultation);
     });
   }
 
