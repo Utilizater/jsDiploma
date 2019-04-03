@@ -13962,7 +13962,7 @@ function ajax() {
       failure: '...что-то погло не так :-('
     };
     form[i].addEventListener("submit", function (event) {
-      statusMesaage = form[i].getElementsByClassName("status")[0];
+      statusMesaage = form[i].getElementsByClassName("status")[0]; //  console.log(statusMesaage);
 
       if (statusMesaage == undefined) {
         statusMesaage = document.createElement("div");
@@ -13974,9 +13974,17 @@ function ajax() {
         element = element.querySelectorAll("*");
 
         for (var j = 0; j < element.length; j++) {
-          console.log(element[j]);
+          //    console.log(element[j]);
           if (element[j].classList.value != "status") element[j].style.display = "none";
+          element[j].value = "";
         }
+
+        setTimeout(function () {
+          var PopupDesign = document.getElementsByClassName("popup-design")[0],
+              PopupConsultation = document.getElementsByClassName("popup-consultation")[0];
+          PopupDesign.style.display = "none";
+          PopupConsultation.style.display = "none";
+        }, 3000);
       }
 
       event.preventDefault();
@@ -14239,6 +14247,10 @@ function firstModal() {
       // console.log(element[j]);
       if (element[j].classList.value != "status") element[j].style.display = "block";
     }
+
+    statusMesaage = document.getElementsByClassName("status")[0];
+    console.log(statusMesaage);
+    if (statusMesaage != undefined) statusMesaage.parentElement.removeChild(statusMesaage);
   }
 
   for (var i = 0; i < reqPopupDesign.length; i++) {
