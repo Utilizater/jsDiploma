@@ -14400,6 +14400,7 @@ function secondModal() {
 
   function timerModal() {
     if (document.getElementsByClassName("popup-design")[0].style.display != "block" && document.getElementsByClassName("popup-consultation")[0].style.display != "block" && document.getElementsByClassName("popup-gift")[0].style.display != "block") PopupConsultation.style.display = "block";
+    unClean(PopupConsultation);
   }
 
   setTimeout(timerModal, 60000);
